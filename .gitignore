@@ -1,2 +1,12 @@
+# Node specific
 node_modules/
-*.env
+npm-debug.log
+
+# Backend environment variables
+backend/.env
+
+# Frontend .env (if you have one later)
+frontend/.env.local
+
+# Other potential files/folders you might want to exclude
+.DS_Store
