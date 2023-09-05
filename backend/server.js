@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
 const recipeRoutes = require('./routes/recipeRoutes');
 app.use('/api/recipes', recipeRoutes);
 
+// User routes
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);
+
 // Global error handler (should come AFTER other app.use() calls)
 app.use((err, req, res, next) => {
     console.error(err.stack);  // Log the error stack for debugging purposes

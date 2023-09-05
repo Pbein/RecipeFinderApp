@@ -1,4 +1,4 @@
-const Recipe = require("../models/recipe");
+const Recipe = require("../models/recipeModel");
 const asyncHandler = require("express-async-handler");
 
 /**
