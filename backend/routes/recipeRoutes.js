@@ -1,5 +1,5 @@
 // This code creates a new router object and assigns it to the router variable. It then exports the router object so that it can be used in other files.
-
+const { protect } = require('../middleware/authMiddleware');
 const express = require('express');
 const router = express.Router();
 
@@ -18,7 +18,7 @@ const {
 router
     .route('/')
     .get(getRecipes)
-    .post(createRecipe);
+    .post(protect, createRecipe);
 
 router
     .route('/random')  // Declare this before '/:id' route to avoid conflict
@@ -35,7 +35,7 @@ router
 router
     .route('/:id')
     .get(getRecipe)
-    .put(updateRecipe)
-    .delete(deleteRecipe);
+    .put(protect, updateRecipe)
+    .delete(protect, deleteRecipe);
 
 module.exports = router;
