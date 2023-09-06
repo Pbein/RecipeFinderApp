@@ -107,8 +107,8 @@ exports.updateRecipe = asyncHandler(async (req, res, next) => {
     }
 
     recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,  // Return updated object
-      runValidators: true,  // Validate the updated data
+      new: true, // Return updated object
+      runValidators: true, // Validate the updated data
     });
 
     return res.status(200).json({
@@ -217,10 +217,11 @@ exports.getRecipesByTitle = asyncHandler(async (req, res, next) => {
  * @access  Public
  */
 exports.getRecipesByIngredient = asyncHandler(async (req, res, next) => {
+  const { ingredient } = req.params;
+
   try {
-    // Use regular expression for a case-insensitive search
     const recipes = await Recipe.find({
-      ingredients: { $regex: req.params.ingredient, $options: "i" },
+      "ingredients.name": { $regex: new RegExp(ingredient, "i") },
     });
 
     return res.status(200).json({
@@ -229,6 +230,7 @@ exports.getRecipesByIngredient = asyncHandler(async (req, res, next) => {
       data: recipes,
     });
   } catch (err) {
+    console.error(err);
     return res.status(500).json({
       success: false,
       error: "Server Error",

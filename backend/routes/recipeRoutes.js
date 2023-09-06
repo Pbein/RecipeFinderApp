@@ -1,9 +1,14 @@
-// Dependencies and Imports
-const { protect } = require("../middleware/authMiddleware");
+// Import necessary dependencies
 const express = require("express");
 const router = express.Router();
+
+// Middleware
+const { protect } = require("../middleware/authMiddleware");
+
+// Model
 const Recipe = require("../models/recipeModel");
 
+// Controllers
 const {
   getRecipes,
   getRecipe,
@@ -15,52 +20,56 @@ const {
   getRecipesByIngredient,
 } = require("../controllers/recipeController");
 
-// Basic CRUD Routes
+// Middleware to log each request to the console for debugging and tracing
+router.use((req, res, next) => {
+  console.log(`Request to: ${req.originalUrl} using method ${req.method}`);
+  next();
+});
 
-// Route to fetch all recipes or post a new recipe
+// ----------- Basic CRUD Routes --------------
+
 router.route("/")
   .get(getRecipes)
-  .post(protect, createRecipe); // Protected route, requires authentication
+  .post(protect, createRecipe); 
 
-// Fetch a specific recipe, update, or delete by its ID
-router.route("/:id")
-  .get(getRecipe)
-  .put(protect, updateRecipe)    // Protected route, requires authentication
-  .delete(protect, deleteRecipe); // Protected route, requires authentication
+// ----------- Special Routes ------------------
 
-// Special Routes
+router.route("/random").get(getRandomRecipe);
 
-// Fetch a random recipe
-router.route("/random")
-  .get(getRandomRecipe);
+// ----------- Search Features ------------------
 
-// Search Features
+router.route("/search").get(async (req, res) => {
+  const { query } = req.query;
 
-// Search recipes specifically by their titles
-router.route("/search/title/:title")
-  .get(getRecipesByTitle);
+  if (!query) {
+    return res.status(400).json({ success: false, message: "Please provide a search query." });
+  }  
 
-// Search recipes by a specific ingredient they contain
-router.route("/search/ingredient/:ingredient")
-  .get(getRecipesByIngredient);
-
-// General search through recipes (both by title and ingredients)
-router.get("/search", async (req, res) => {
-  const { query } = req.query; // Extract the search query from the URL parameters
-  
   try {
-    // Search in both the 'title' and 'ingredients.name' fields in the recipes collection
     const recipes = await Recipe.find({
       $or: [
-        { "title": { $regex: new RegExp(query, "i") } },
-        { "ingredients.name": { $regex: new RegExp(query, "i") } }
-      ]
+        { title: { $regex: new RegExp(query, "i") } },
+        { "ingredients.name": { $regex: new RegExp(query, "i") } },
+      ],
     });
-    
+
     res.json({ success: true, data: recipes });
   } catch (err) {
-    res.status(500).json({ success: false, message: "Server error" });
+    console.error(err);
+    res.status(500).json({ success: false, message: err.message, query });
   }
 });
 
+router.route("/search/title/:title").get(getRecipesByTitle);
+
+// Use the controller function instead of the inline function
+router.route("/search/ingredient/:ingredient").get(getRecipesByIngredient);
+
+// Fetch, update, or delete a specific recipe by its ID
+router.route("/:id")
+  .get(getRecipe)
+  .put(protect, updateRecipe)
+  .delete(protect, deleteRecipe); 
+
+// Export the router
 module.exports = router;
