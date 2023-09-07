@@ -1,15 +1,12 @@
+// Importing required dependencies and model
 const Recipe = require("../models/recipeModel");
 const asyncHandler = require("express-async-handler");
 
-/**
- * @desc    Retrieve a paginated list of recipes
- * @route   GET /api/recipes?page=1&limit=10
- * @access  Public
- */
+// Controller to retrieve a paginated list of recipes
 exports.getRecipes = asyncHandler(async (req, res, next) => {
-  // Set up pagination parameters with defaults
-  const page = parseInt(req.query.page, 10) || 1; // Page number, default is 1
-  const limit = parseInt(req.query.limit, 10) || 10; // Number of items per page, default is 10
+  // Setup pagination parameters with defaults
+  const page = parseInt(req.query.page, 10) || 1;
+  const limit = parseInt(req.query.limit, 10) || 10;
   const skip = (page - 1) * limit;
 
   try {
@@ -30,6 +27,9 @@ exports.getRecipes = asyncHandler(async (req, res, next) => {
     });
   }
 });
+
+// ... [rest of the file remains as provided]
+
 
 /**
  * @desc    Retrieve a single recipe by ID
