@@ -1,50 +1,41 @@
-//.src/App.jsx
-import { useState } from "react";
-import "./App.css";
-import { login } from "./services/auth.service";
-import useAuthStore from './stores/authStore';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-dom';
+import Dashboard from './routes/Dashboard';
+import Login from './routes/Login';
+import Register from './routes/Register';
+import Profile from './routes/Profile';
+import HomePage from './routes/HomePage';
 
 function App() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const setToken = useAuthStore((state) => state.setToken);
-  const token = useAuthStore((state) => state.token);
-  const clearToken = useAuthStore((state) => state.clearToken);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<ProfileWrapper />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
-  const handleLogin = async () => {
-    try {
-      const response = await login({ email, password });
-      if (response) {
-        setToken(response.token);
-      }
-    } catch (error) {
-      console.error('Failed to login:', error);
-    }
-  };
-
-  const handleLogout = () => {
-    clearToken();
-  };
-
+function ProfileWrapper() {
   return (
     <div>
-      <h1> Home </h1>
-      <input
-        placeholder="email"
-        type="text"
-        onChange={(event) => setEmail(event.target.value)}
-      />
-      <input
-        placeholder="password"
-        type="password"
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
-      <button onClick={handleLogout}>Logout</button>
-      {token ? <h3>Logged In</h3> : <h3>Not Logged In</h3>}
+      {/* Any common profile header/navigation can go here */}
+      <nav>
+        {/* You can put any common profile related links here */}
+      </nav>
+      <Outlet />
+      {/* Profile specific routes go here */}
+      <Routes>
+        {/* You can add nested profile specific routes here */}
+        <Route path="/" element={<Profile />} /> {/* default profile route */}
+        {/* For example, you can add settings or any other nested route */}
+        {/* <Route path="settings" element={<ProfileSettings />} /> */}
+      </Routes>
     </div>
   );
 }
 
 export default App;
-// end of .src/App.jsx

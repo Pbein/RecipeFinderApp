@@ -26,9 +26,7 @@ export const register = async (user) => {
             password2: user.password2,
         });
 
-        return response.data.token
-            ? true
-            : false;
+        return response.data.token ? response.data : undefined;
     } catch (error) {
         console.error('Registration Error:', error.response?.data || error.message);
         throw error; // Propagate the error so you can handle it where this function is called
