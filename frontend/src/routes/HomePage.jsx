@@ -1,5 +1,5 @@
-// src/routes/HomePage.js
-import { Link } from 'react-dom';
+// src/routes/HomePage.jsx
+import { Link } from 'react-router-dom';
 
 function HomePage() {
         return (
@@ -13,4 +13,4 @@ function HomePage() {
     }
 
 export default HomePage;
-// end of src/routes/HomePage.js
+// end of src/routes/HomePage.jsx

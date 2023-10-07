@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Outlet } from 'react-dom';
+// ./src/App.jsx
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import Dashboard from './routes/Dashboard';
 import Login from './routes/Login';
 import Register from './routes/Register';
@@ -7,15 +8,17 @@ import HomePage from './routes/HomePage';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<ProfileWrapper />} />
-      </Routes>
-    </BrowserRouter>
+
+    <HomePage/>
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path="/" element={<HomePage />} />
+    //     <Route path="/login" element={<Login />} />
+    //     <Route path="/register" element={<Register />} />
+    //     <Route path="/dashboard" element={<Dashboard />} />
+    //     <Route path="/profile" element={<ProfileWrapper />} />
+    //   </Routes>
+    // </BrowserRouter>
   );
 }
 
@@ -39,3 +42,4 @@ function ProfileWrapper() {
 }
 
 export default App;
+// end of frontend/src/App.jsx

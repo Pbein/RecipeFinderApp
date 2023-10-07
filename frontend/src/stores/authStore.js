@@ -1,6 +1,6 @@
 // src/stores/authStore.js
 
-import create from 'zustand';
+import { create } from 'zustand';
 
 const useAuthStore = create((set) => ({
   token: localStorage.getItem('authToken') || null,  // Initialize token from localStorage
