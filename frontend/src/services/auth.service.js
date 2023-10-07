@@ -20,10 +20,9 @@ export const login = async (user) => {
 export const register = async (user) => {
     try {
         const response = await axios.post("http://localhost:5000/api/users/register", {
-            name: user.name,
+            username: user.username,
             email: user.email,
             password: user.password,
-            password2: user.password2,
         });
 
         return response.data.token ? response.data : undefined;

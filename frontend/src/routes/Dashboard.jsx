@@ -1,13 +1,13 @@
 // src/routes/Dashboard.js
-import { Link } from 'react-dom';
-import useAuthStore from '../stores/authStore';
+import { Link } from "react-router-dom";
+import useAuthStore from "../stores/authStore";
 
 function Dashboard() {
   const token = useAuthStore((state) => state.token);
 
   if (!token) {
-    // If there's no token, redirect to HomePage or Login.
-    window.location.href = '/';
+    //   // If there's no token, redirect to HomePage or Login.
+    window.location.href = "/";
   }
 
   return (

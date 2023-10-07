@@ -1,6 +1,6 @@
 //.src/routes/Login.jsx
 import { useState } from "react";
-import { useNavigate } from "react-dom";
+import { useNavigate } from "react-router-dom";
 // import "./Login.css";
 import { login } from "../services/auth.service";
 import useAuthStore from "../stores/authStore";
@@ -9,6 +9,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const setToken = useAuthStore((state) => state.setToken);
+  const setUser = useAuthStore((state) => state.setUser);
   //   const token = useAuthStore((state) => state.token);
   //   const clearToken = useAuthStore((state) => state.clearToken);
 
@@ -17,8 +18,11 @@ function Login() {
   const handleLogin = async () => {
     try {
       const response = await login({ email, password });
+      console.log("response", response);
       if (response && response.token) {
         setToken(response.token);
+        setUser(response);
+        
         // Navigate to Dashboard after successful login
         navigate("/dashboard");
       }
