@@ -22,24 +22,5 @@ function App() {
   );
 }
 
-// function ProfileWrapper() {
-//   return (
-//     <div>
-//       {/* Any common profile header/navigation can go here */}
-//       <nav>
-//         {/* You can put any common profile related links here */}
-//       </nav>
-//       <Outlet />
-//       {/* Profile specific routes go here */}
-//       <Routes>
-//         {/* You can add nested profile specific routes here */}
-//         <Route path="/" element={<Profile />} /> {/* default profile route */}
-//         {/* For example, you can add settings or any other nested route */}
-//         {/* <Route path="settings" element={<ProfileSettings />} /> */}
-//       </Routes>
-//     </div>
-//   );
-// }
-
 export default App;
 // end of frontend/src/App.jsx
