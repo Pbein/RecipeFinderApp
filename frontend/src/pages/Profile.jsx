@@ -1,4 +1,4 @@
-// src/routes/Profile.js
+// src/pages/Profile.js
 import useAuthStore from "../stores/authStore";
 
 function Profile() {
@@ -35,4 +35,4 @@ function Profile() {
 }
 
 export default Profile;
-// end of src/routes/Profile.js
+// end of src/pages/Profile.js

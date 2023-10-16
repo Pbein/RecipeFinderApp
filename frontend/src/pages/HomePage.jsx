@@ -1,4 +1,4 @@
-// src/routes/HomePage.jsx
+// src/pages/HomePage.jsx
 import "./styles/HomePage.css";
 import { Link } from "react-router-dom";
 
@@ -19,4 +19,4 @@ function HomePage() {
 }
 
 export default HomePage;
-// end of src/routes/HomePage.jsx
+// end of src/pages/HomePage.jsx

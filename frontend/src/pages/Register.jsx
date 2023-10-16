@@ -1,4 +1,4 @@
-// src/routes/Register.js
+// src/pages/Register.js
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import "./Register.css";
@@ -60,4 +60,4 @@ function Register() {
 }
 
 export default Register;
-// end of src/routes/Register.js
+// end of src/pages/Register.js

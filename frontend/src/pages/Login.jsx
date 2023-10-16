@@ -1,4 +1,4 @@
-//.src/routes/Login.jsx
+//.src/pages/Login.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import "./Login.css";
@@ -50,4 +50,4 @@ function Login() {
 }
 
 export default Login;
-// end of .src/routes/Login.jsx
+// end of .src/pages/Login.jsx

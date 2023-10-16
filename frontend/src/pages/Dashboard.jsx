@@ -1,4 +1,4 @@
-// src/routes/Dashboard.js
+// src/pages/Dashboard.js
 import { Link } from "react-router-dom";
 import useAuthStore from "../stores/authStore";
 
@@ -20,4 +20,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
-// end of src/routes/Dashboard.js
+// end of src/pages/Dashboard.js
