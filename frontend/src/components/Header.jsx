@@ -1,3 +1,4 @@
+// start of RecipeFinderApp/frontend/src/components/Header.jsx
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -31,3 +32,4 @@ export default function Header() {
     </header>
   );
 }
+// end of RecipeFinderApp/frontend/src/components/Header.jsx
