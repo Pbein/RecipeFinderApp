@@ -1,4 +1,8 @@
 // src/pages/HomePage.jsx
+import VibrantKitchenHeroImage from "../assets/VibrantKitchenHeroImage.png";
+import RecipeIcon from "../assets/RecipeIcon.png";
+import PantryIcon from "../assets/PantryIcon.png";
+import CommunityIcon from "../assets/CommunityIcon.png";
 import "./styles/HomePage.css";
 import { Link } from "react-router-dom";
 
@@ -6,27 +10,21 @@ function HomePage() {
   return (
     <div className="home-container">
       <section className="hero-section bg-slate-800 text-white p-10">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Recipe Finder</h1>
-        <p className="mb-6">
-          Discover endless culinary possibilities based on the ingredients you
-          already have!
-        </p>
-        <img
-          src="/assets/hero-image.jpg"
-          alt="A vibrant kitchen setup with various fresh ingredients."
-          className="rounded-lg mb-6"
-        />
-        <p className="mb-4">
-          Create a profile to personalize your experience or dive right in as a
-          guest. Your tasty journey awaits!
-        </p>
-        <div className="cta-buttons flex gap-4">
-          <Link to="/login" className="btn btn-primary">
-            Login
-          </Link>
-          <Link to="/register" className="btn btn-secondary">
-            Register
-          </Link>
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Welcome to Recipe Finder</h1>
+          <p className="mb-6">
+            Discover endless culinary possibilities based on the ingredients you
+            already have!
+          </p>
+          <img
+            src={VibrantKitchenHeroImage}
+            alt="A vibrant kitchen setup with various fresh ingredients."
+            className="rounded-lg mb-6 w-full object-cover"
+          />
+          <p className="mb-4">
+            Create a profile to personalize your experience or dive right in as
+            a guest. Your tasty journey awaits!
+          </p>
         </div>
       </section>
 
@@ -34,9 +32,9 @@ function HomePage() {
         <div className="feature-item flex gap-4 mb-6">
           <div className="feature-icon">
             <img
-              src="/assets/pantry-icon.jpg"
+              src={PantryIcon}
               alt="Icon of a pantry"
-              className="rounded-lg"
+              className="rounded-lg w-32 h-32 md:w-48 md:h-48"
             />
           </div>
           <div className="feature-description">
@@ -50,9 +48,9 @@ function HomePage() {
         <div className="feature-item flex gap-4 mb-6">
           <div className="feature-icon">
             <img
-              src="/assets/community-icon.jpg"
+              src={CommunityIcon}
               alt="Icon of a community"
-              className="rounded-lg"
+              className="rounded-lg w-32 h-32 md:w-48 md:h-48"
             />
           </div>
           <div className="feature-description">
@@ -66,9 +64,9 @@ function HomePage() {
         <div className="feature-item flex gap-4">
           <div className="feature-icon">
             <img
-              src="/assets/recipe-icon.jpg"
+              src={RecipeIcon}
               alt="Icon of a recipe book"
-              className="rounded-lg"
+              className="rounded-lg md:w-48 md:h-48"
             />
           </div>
           <div className="feature-description">
