@@ -4,7 +4,6 @@ import RecipeIcon from "../assets/RecipeIcon.png";
 import PantryIcon from "../assets/PantryIcon.png";
 import CommunityIcon from "../assets/CommunityIcon.png";
 import "./styles/HomePage.css";
-import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
