@@ -7,10 +7,11 @@ import "./styles/HomePage.css";
 
 function HomePage() {
   return (
+    // Change header to say "Welcome to Recipe Finder"
     <div className="home-container">
       <section className="hero-section bg-slate-800 text-white p-10">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Recipe Finder</h1>
+          <h1 className="text-4xl font-bold mb-4">Recipe Finder</h1>
           <p className="mb-6">
             Discover endless culinary possibilities based on the ingredients you
             already have!
