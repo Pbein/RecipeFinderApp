@@ -40,7 +40,7 @@ function HomePage() {
           <div className="feature-description">
             <h2 className="text-2xl font-bold mb-2">Save Your Pantry</h2>
             <p>
-              List your available ingredients once and we'll keep them safe for
+              List your available ingredients once and we&apos;ll keep them safe for
               your next visit. No more tedious re-entry!
             </p>
           </div>
@@ -72,7 +72,7 @@ function HomePage() {
           <div className="feature-description">
             <h2 className="text-2xl font-bold mb-2">Endless Recipes</h2>
             <p>
-              Whether you're a pro chef or a newbie, explore a vast array of
+              Whether you&apos;re a pro chef or a newbie, explore a vast array of
               recipes and find the perfect match for your taste buds.
             </p>
           </div>
