@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Header from "./components/Header";
 import LandingPage from "./pages/LandingPage";
+import RecipePage from "./pages/RecipePage";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/recipes" element={<RecipePage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
