@@ -57,7 +57,12 @@ const recipeSchema = new mongoose.Schema({
     // List of ingredients required for the recipe
     ingredients: [ingredientSchema],
     // Step-by-step guide on preparing the recipe
-    instructions: [instructionSchema]
+    instructions: [instructionSchema],
+    // Image of the recipe
+    imageUrl: {
+        type: String,
+        default: 'no-photo.jpg'
+    },
 });
 
 // Export the Recipe model based on the recipeSchema
