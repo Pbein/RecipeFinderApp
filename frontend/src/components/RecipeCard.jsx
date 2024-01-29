@@ -1,19 +1,11 @@
-import { getImagePath } from "../helperFunctions/getImagePath";
 import { Link } from "react-router-dom";
 
-const RecipeCard = ({ imageName, title, tags, skillLevel, recipeID = null }) => {
-  const imagePath = getImagePath(imageName);
-
-  const recipeIds = {
-    ratatouille: "65b5a71071b9ec6b1f3ef8ae",
-    // ... add other recipe IDs here
-  };
-
+const RecipeCard = ({ recipeID, title, tags, skillLevel, imageUrl }) => {
   return (
     <div className="card bg-white rounded-lg shadow-md overflow-hidden">
-      <Link to={`/recipes/${recipeID || recipeIds.ratatouille}`}>
-        {imagePath && (
-          <img src={imagePath} alt={title} className="w-full h-auto" />
+      <Link to={`/recipes/${recipeID}`}>
+        {imageUrl && (
+          <img src={imageUrl} alt={title} className="w-full h-auto" />
         )}
       </Link>
       <div className="p-4">
