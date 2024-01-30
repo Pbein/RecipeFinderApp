@@ -67,7 +67,7 @@ const recipeSchema = new mongoose.Schema({
         default: 'no-photo.jpg'
     },
     // Dietary preference tags for the recipe
-    dietaryPreferences: [{ 
+    dietaryFlags: [{ 
         type: String,
         enum: ['dairy-free', 'gluten-free', 'vegan', 'vegetarian', 'nut-free', 'low-carb']
     }],
