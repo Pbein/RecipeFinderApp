@@ -1,3 +1,4 @@
+// userModel.js contains the schema for the user model in the MongoDB database. It also contains methods to encrypt the password before saving the user to the database, generate a JWT for user authentication, and compare the provided password with the hashed password in the database.
 // Import required packages and modules
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -31,7 +32,18 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
-    }
+    },
+    // Dietary flags for user preferences
+    dietaryFlags: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'DietaryFlag'
+    
+    }],
+    // Allergen flags for user preferences
+    allergies: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Allergen'
+    }]
 });
 
 // Middleware to encrypt password before saving user to the database
@@ -55,3 +67,5 @@ userSchema.methods.matchPassword = async function(enteredPassword) {
 
 // Export the User model based on the userSchema
 module.exports = mongoose.model('User', userSchema);
+
+// userModel.js contains the schema for the user model in the MongoDB database. It also contains methods to encrypt the password before saving the user to the database, generate a JWT for user authentication, and compare the provided password with the hashed password in the database.

@@ -1,26 +1,7 @@
+// recipeModel.js defines the schema for a recipe, including sub-schemas for ingredients and instructions, and exports the Recipe model based on the schema.
 // Import required package
 const mongoose = require('mongoose');
-
-// Define ingredient sub-schema for a recipe
-const ingredientSchema = new mongoose.Schema({
-    // Name of the ingredient
-    name: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    // Quantity or measurement for the ingredient
-    quantity: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    // Additional notes or description for the ingredient
-    notes: {
-        type: String,
-        trim: true
-    }
-});
+const RecipeIngredient = require('./recipeIngredientSchema');
 
 // Define instruction sub-schema for a recipe
 const instructionSchema = new mongoose.Schema({
@@ -57,7 +38,7 @@ const recipeSchema = new mongoose.Schema({
     // List of ingredients required for the recipe
     ingredients: [{ 
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Ingredient' 
+        ref: 'RecipeIngredient' 
     }],
     // Step-by-step guide on preparing the recipe
     instructions: [instructionSchema],
@@ -106,3 +87,5 @@ const recipeSchema = new mongoose.Schema({
 
 // Export the Recipe model based on the recipeSchema
 module.exports = mongoose.model('Recipe', recipeSchema);
+
+// The recipeSchema defines the structure of a recipe, including the title, description, ingredients, instructions, image URL, dietary flags, tags, prep time, cook time, servings, difficulty, and rating. The Recipe model is exported based on the schema, allowing the application to interact with the MongoDB database using this model.
